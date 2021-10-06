@@ -1,0 +1,184 @@
+{
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app",
+    "isDirectory": true,
+    "size": 96,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789378,
+    "contentHash": "b28b7af69320201d1cf206ebf28373980add1451",
+    "state": "u",
+    "isArtifactRoot": true,
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main",
+    "isDirectory": true,
+    "size": 96,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789378,
+    "contentHash": "7505d64a54e061b7acd54ccd58b49dc43500b635",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default",
+    "isDirectory": true,
+    "size": 448,
+    "modifiedTime": 1633437260397,
+    "changeTime": 1633493789378,
+    "contentHash": "134fb9100108b9aaba9aee713cf235d514fd8f88",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/applications": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/applications",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789377,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/aura": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/aura",
+    "isDirectory": true,
+    "size": 96,
+    "modifiedTime": 1633437260398,
+    "changeTime": 1633493789378,
+    "contentHash": "71c20a341bfe32aa5cd5b4384e94f942bab6a7d3",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes",
+    "isDirectory": true,
+    "size": 128,
+    "modifiedTime": 1633494552124,
+    "changeTime": 1633494552124,
+    "contentHash": "9b494c8a0f0d0a83bc4e67cb6de00a45169cc0ed",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes/TestClass.cls": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes/TestClass.cls",
+    "size": 72,
+    "modifiedTime": 1633494552124,
+    "changeTime": 1633494552124,
+    "contentHash": "3dff97a75d0096d775236fa2cccbb782844c3696",
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "ApexClass"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes/TestClass.cls-meta.xml": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/classes/TestClass.cls-meta.xml",
+    "size": 174,
+    "modifiedTime": 1633494552124,
+    "changeTime": 1633494552124,
+    "contentHash": "d47fd6b1e2658ef3bf1ffd156c6bbfef9f9f3172",
+    "isMetadataFile": true,
+    "state": "u",
+    "package": "force-app",
+    "metadataType": "ApexClass"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/contentassets": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/contentassets",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789375,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/flexipages": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/flexipages",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789375,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/layouts": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/layouts",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789376,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/lwc": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/lwc",
+    "isDirectory": true,
+    "size": 128,
+    "modifiedTime": 1633437271441,
+    "changeTime": 1633493789374,
+    "contentHash": "a973ac1b5be0e216b2a2db1b82ae5ba97f4086f4",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/objects": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/objects",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789376,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/permissionsets": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/permissionsets",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260334,
+    "changeTime": 1633493789375,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/staticresources": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/staticresources",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260335,
+    "changeTime": 1633493789376,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/tabs": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/tabs",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260335,
+    "changeTime": 1633493789375,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/triggers": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security/force-app/main/default/triggers",
+    "isDirectory": true,
+    "size": 64,
+    "modifiedTime": 1633437260335,
+    "changeTime": 1633493789376,
+    "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "state": "u",
+    "package": "force-app"
+  },
+  "/Users/sunshuaishuai/Coding/Git/Security": {
+    "sourcePath": "/Users/sunshuaishuai/Coding/Git/Security",
+    "isDirectory": true,
+    "size": 416,
+    "modifiedTime": 1633493818075,
+    "changeTime": 1633493818075,
+    "contentHash": "9d165b6a0f01c868cb34d24d106ad2ca08eae8ef",
+    "state": "u",
+    "isWorkspace": true
+  }
+}
