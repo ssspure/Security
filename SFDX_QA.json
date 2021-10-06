@@ -1,0 +1,19 @@
+{
+  "status": 0,
+  "result": {
+    "id": "00D1m0000000W38EAE",
+    "devHubId": "ssspure@gmail.com",
+    "accessToken": "00D1m0000000W38!ARQAQNs339FRdT3i2XyVQFyMVJziQF2dT44TyuSWZtJrc2RUswCgga6rXcJNVP0igAXe_SPWLLLUEZPv2xHMDyYpqWIfQdk1",
+    "instanceUrl": "https://saas-efficiency-2206-dev-ed.cs117.my.salesforce.com",
+    "username": "test-rtu45mgme8dy@example.com",
+    "clientId": "PlatformCLI",
+    "status": "Active",
+    "expirationDate": "2021-11-05",
+    "createdBy": "ssspure@gmail.com",
+    "edition": "Developer",
+    "orgName": "sunshuaishuai company",
+    "createdDate": "2021-10-06T03:31:56.000+0000",
+    "sfdxAuthUrl": "force://PlatformCLI::5Aep8613wlbvVohodI_xx3UZXlW.0EoBgQ.fFKvkISZQ6e2.qmHXnsUyMC.01CyP6utOs5OiXk47bgdwPv7M6_y@saas-efficiency-2206-dev-ed.cs117.my.salesforce.com",
+    "alias": "ORG20211006"
+  }
+}
