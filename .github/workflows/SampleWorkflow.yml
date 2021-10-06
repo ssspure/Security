@@ -39,13 +39,13 @@ jobs:
 
     - name: 'Populate auth file with SFDX_URL secret'
       shell: bash
-      run: 'echo ${{ secrets.SCRATCH }} > SFDX_QA'
+      run: 'echo ${{ secrets.SCRATCH }} > SFDX_AUTH_INFO'
 
     - name: 'Authenticate against dev hub'
-      run: node_modules/sfdx-cli/bin/run force:auth:sfdxurl:store -f SFDX_QA -s -a LRQA
+      run: node_modules/sfdx-cli/bin/run force:auth:sfdxurl:store -f SFDX_AUTH_INFO -s -a AUTH_INFO
 
     - name: Deploy source
       id: Deploy
       if: github.event_name == 'push'
       run:
-        node_modules/sfdx-cli/bin/run force:source:deploy -p force-app -u LRQA --json --loglevel fatal
+        node_modules/sfdx-cli/bin/run force:source:deploy -p force-app --testlevel RunLocalTests -u AUTH_INFO --json --loglevel fatal
