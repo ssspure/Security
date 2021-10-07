@@ -1,5 +1,5 @@
 public with sharing class TestGithubInte {
-    public TestGithubInte() {
-
+    public static String getName(){
+        return 'Helloaaa';
     }
 }
