@@ -21,58 +21,54 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.ref }}
-        fetch-depth: 0
-      if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event_name == 'push'
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '>=14'
-        check-latest: true
+      # Checkout Source from Github
+      - name 'Checkout source code'
+        uses: actions/checkout@v2
    
-    - name: Install Salesforce CLI
-      run: |
-        npm install sfdx-cli
-        node_modules/sfdx-cli/bin/run --version
-        node_modules/sfdx-cli/bin/run plugins --core
-    - name: 'Populate auth file with SFDX_URL secret'
-      shell: bash
-      run: 'echo ${{ secrets.SALESFORCEAUTHINFO }} > SFDX_AUTH_INFO'
+      # Install Salesforce CLI
+      - name: 'Install Salesforce CLI'
+        run: |
+            wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+            mkdir ~/sfdx
+            tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
+            echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+            ~/sfdx/bin/sfdx version
 
-    - name: 'Authenticate against dev hub'
-      run: node_modules/sfdx-cli/bin/run force:auth:sfdxurl:store -f SFDX_AUTH_INFO -s -a AUTH_INFO
+      # Store secret for dev hub
+      - name: 'Populate auth file with SFDX_URL secret'
+        shell: bash
+        run: 'echo ${{ secrets.SALESFORCEAUTHINFO }} > SFDX_AUTH_INFO'
 
-    # - name: Run Apex test
-    #   shell: bash
-    #   run: |
-    #     sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > TEST_CLASS
-    #     node_modules/sfdx-cli/bin/run force:apex:test:run --resultformat tap --codecoverage -c -r human -n $(cat TEST_CLASS)
+      # Authenticate against dev hub
+      - name: 'Authenticate against dev hub'
+        run: sfdx force:auth:sfdxurl:store -f SFDX_AUTH_INFO -s -a AUTH_INFO
 
-    # - name: Deploy source
-    #   id: Deploy
-    #   if: github.event_name == 'push'
-    #   run:
-    #     node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal
+      # - name: Run Apex test
+      #   shell: bash
+      #   run: |
+      #     sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > TEST_CLASS
+      #     node_modules/sfdx-cli/bin/run force:apex:test:run --resultformat tap --codecoverage -c -r human -n $(cat TEST_CLASS)
 
-    # - name: Run Apex test
-    #   shell: bash
-    #   run: |
-    #     sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > TEST_CLASS
-    #     node_modules/sfdx-cli/bin/run force:apex:test:run --resultformat tap --codecoverage -c -r human -n $(cat TEST_CLASS)
+      # - name: Deploy source
+      #   id: Deploy
+      #   if: github.event_name == 'push'
+      #   run:
+      #     node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal
 
-    - name: Deploy source And Run Apex Test
-      id: Deploy
-      shell: bash
-      if: github.event_name == 'push'
-      - run: sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
+      # - name: Run Apex test
+      #   shell: bash
+      #   run: |
+      #     sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > TEST_CLASS
+      #     node_modules/sfdx-cli/bin/run force:apex:test:run --resultformat tap --codecoverage -c -r human -n $(cat TEST_CLASS)
 
-      - run: |
-        if [ -s ./TEST_CLASS ]; then
-          node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
-        fi
-
-      - run: |
-        if [ ! -s ./TEST_CLASS ]; then
-          node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal
-        fi
+      - name: Deploy source And Run Apex Test
+        id: Deploy
+        shell: bash
+        if: github.event_name == 'push'
+        run: |
+          sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
+          if [ -s ./TEST_CLASS ]; then
+            sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
+          else
+            sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal
+          fi
