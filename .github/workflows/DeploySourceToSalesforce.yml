@@ -67,8 +67,4 @@ jobs:
       if: github.event_name == 'push'
       run: |
         sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
-        if [ -s ./TEST_CLASS ]; then
-          node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
-          exit
-        fi
         node_modules/sfdx-cli/bin/run force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
