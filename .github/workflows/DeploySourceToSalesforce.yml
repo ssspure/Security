@@ -11,11 +11,6 @@ on:
     branches: [ master ]
     paths: 
           - 'force-app/**'
-  pull_request:
-    branches: [ master ]
-    types: [opened, reopened]
-    paths:
-          - 'force-app/**'  
   workflow_dispatch:
     branches: [ master ]  
 
@@ -48,7 +43,7 @@ jobs:
       # Deploy source And Run Apex Test
       - name: Deploy source And Run Apex Test
         shell: bash
-        if: github.event_name == 'push' || github.event_name == 'pull_request'
+        if: github.event_name == 'push'
         run: |
           result=$(sudo grep -c "<name>ApexClass</name>" manifest/${{ env.packageXml }} || true)
           if [ $result -eq 0 ]; then
