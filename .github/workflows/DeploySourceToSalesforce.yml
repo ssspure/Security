@@ -1,22 +1,26 @@
 # ------------------------- set global variable -------------------------
 env:
   packageXml: partialPackage.xml
+  targetBranches: master
 # -----------------------------------------------------------------------
 
-  
+
 name: Deploy Source to Salesforce
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+          - ${{ env.branches }}
     paths: 
           - 'force-app/**'
   pull_request:
-    branches: [ master ]
+    branches: 
+          - ${{ env.branches }}
     paths:
           - 'force-app/**'  
   workflow_dispatch:
-    branches: [ master ]  
+    branches: 
+          - ${{ env.branches }} 
 
 jobs:
   build:
