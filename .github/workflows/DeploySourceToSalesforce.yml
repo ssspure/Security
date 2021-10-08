@@ -67,7 +67,7 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          sudo cat manifest/package_diff.xml | grep '</members>' > ./TEST_CLASS
+          sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > TEST_CLASS
           cat ./TEST_CLASS
 
 
