@@ -1,9 +1,9 @@
 # ------------------------- set global variable -------------------------
 env:
-  packageXml: '${{ partialPackage.xml }}'
+  packageXml: partialPackage.xml
 # -----------------------------------------------------------------------
 
-
+  
 name: Deploy Source to Salesforce
 
 on:
