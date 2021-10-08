@@ -67,13 +67,13 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          sudo cat manifest/package_diff.xml | grep '<members>[A-Za-z0-9]*Test[s]*<//members>' > TEST_CLASS
+          sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*<members>' > TEST_CLASS
           cat ./TEST_CLASS
 
 
-      - name: Deploy source And Run Apex Test
-        id: Deploy
-        shell: bash
-        if: github.event_name == 'push'
-        run: |
-          sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
+      # - name: Deploy source And Run Apex Test
+      #   id: Deploy
+      #   shell: bash
+      #   if: github.event_name == 'push'
+      #   run: |
+      #     sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
