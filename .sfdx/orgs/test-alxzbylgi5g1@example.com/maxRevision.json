@@ -1,0 +1,71 @@
+{
+  "serverMaxRevisionCounter": 157,
+  "sourceMembers": {
+    "Profile__Admin": {
+      "serverRevisionCounter": 149,
+      "lastRetrievedFromServer": 149,
+      "memberType": "Profile",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestClass": {
+      "serverRevisionCounter": 150,
+      "lastRetrievedFromServer": 150,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestClassTest": {
+      "serverRevisionCounter": 151,
+      "lastRetrievedFromServer": 151,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestPerson": {
+      "serverRevisionCounter": 71,
+      "lastRetrievedFromServer": null,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestPersonTest": {
+      "serverRevisionCounter": 34,
+      "lastRetrievedFromServer": null,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestGithubInte": {
+      "serverRevisionCounter": 152,
+      "lastRetrievedFromServer": 152,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "ApexClass__TestGithubInteTest": {
+      "serverRevisionCounter": 153,
+      "lastRetrievedFromServer": 153,
+      "memberType": "ApexClass",
+      "isNameObsolete": false
+    },
+    "LightningComponentBundle__shinseiDetail": {
+      "serverRevisionCounter": 154,
+      "lastRetrievedFromServer": 154,
+      "memberType": "LightningComponentBundle",
+      "isNameObsolete": false
+    },
+    "LightningComponentResource__shinseiDetail/shinseiDetail.html": {
+      "serverRevisionCounter": 155,
+      "lastRetrievedFromServer": 155,
+      "memberType": "LightningComponentResource",
+      "isNameObsolete": false
+    },
+    "LightningComponentResource__shinseiDetail/shinseiDetail.js": {
+      "serverRevisionCounter": 156,
+      "lastRetrievedFromServer": 156,
+      "memberType": "LightningComponentResource",
+      "isNameObsolete": false
+    },
+    "LightningComponentResource__shinseiDetail/shinseiDetail.js-meta.xml": {
+      "serverRevisionCounter": 157,
+      "lastRetrievedFromServer": 157,
+      "memberType": "LightningComponentResource",
+      "isNameObsolete": false
+    }
+  }
+}
