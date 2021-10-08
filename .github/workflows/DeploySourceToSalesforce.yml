@@ -10,17 +10,17 @@ name: Deploy Source to Salesforce
 on:
   push:
     branches: 
-          - ${{ env.branches }}
+          - ${{ env.targetBranches }}
     paths: 
           - 'force-app/**'
   pull_request:
     branches: 
-          - ${{ env.branches }}
+          - ${{ env.targetBranches }}
     paths:
           - 'force-app/**'  
   workflow_dispatch:
     branches: 
-          - ${{ env.branches }} 
+          - ${{ env.targetBranches }} 
 
 jobs:
   build:
