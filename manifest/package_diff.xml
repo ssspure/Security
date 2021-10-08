@@ -5,7 +5,7 @@
         <members>TestPerson</members>
         <members>TestClassTest</members>
         <members>TestPersonTest</members>
-        <name>ApexClass</name>
+        <name>apexclass</name>
     </types>
     <version>51.0</version>
 </Package>
