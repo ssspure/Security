@@ -15,7 +15,9 @@ on:
   pull_request:
     branches: [ master ]
     paths:
-            - 'force-app/**'         
+            - 'force-app/**'  
+  workflow_dispatch:
+    branches: [ master ]  
 
 jobs:
   build:
