@@ -66,7 +66,4 @@ jobs:
       - name: Deploy source And Run Apex Test
         shell: bash
         if: github.event_name == 'push'
-        run: |
-          var=$(sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$//)
-          echo $var
-          
+        run: sudo cat manifest/package_diff.xml | grep -o -P '<name>ApexClass</name>'
