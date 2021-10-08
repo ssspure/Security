@@ -6,7 +6,11 @@
 # This workflow will install Deno then run Deno lint and test.
 # For more information see: https://github.com/denoland/setup-deno
 
+env:
+  pluginId: 'plugin-fn-xml-node'
+
 name: Deploy Source to Salesforce
+
 on:
   push:
     branches: [ master ]
@@ -67,6 +71,7 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
+          echo ${{ env.pluginId }} 
           result=$(sudo grep -c "<name>ApexClass</name>" manifest/package_diff.xml || true)
           if [ $result -eq 0 ]; then
             sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
