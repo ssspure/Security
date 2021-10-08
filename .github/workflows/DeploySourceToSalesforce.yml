@@ -71,12 +71,6 @@ jobs:
           if [ $result -eq 0 ]; then
             sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
           else
-            result=$(sudo grep -c '<members>[A-Za-z0-9]*Test[s]*</members>' manifest/package_diff.xml || true)
-            if [ $result -eq 0 ]; then
-              echo "No test class"
-              exit 1
-            else
-              sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
-              sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
-            fi
+            sudo cat manifest/package_diff.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
+            sfdx force:source:deploy -x manifest/package_diff.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
           fi
