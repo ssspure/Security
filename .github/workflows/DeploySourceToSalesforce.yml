@@ -1,6 +1,6 @@
 # ------------------------- set global variable -------------------------
 env:
-  packageXml: 'partialPackage.xml'
+  packageXml: '${{ partialPackage.xml }}'
 # -----------------------------------------------------------------------
 
 
@@ -9,12 +9,12 @@ name: Deploy Source to Salesforce
 on:
   push:
     branches: [ master ]
-    paths:
-            - 'force-app/**'
+    paths: 
+          - 'force-app/**'
   pull_request:
     branches: [ master ]
     paths:
-            - 'force-app/**'  
+          - 'force-app/**'  
   workflow_dispatch:
     branches: [ master ]  
 
@@ -49,17 +49,16 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          echo ${{ env.pluginId }} 
           result=$(sudo grep -c "<name>ApexClass</name>" manifest/${{ env.packageXml }} || true)
           if [ $result -eq 0 ]; then
-            sfdx force:source:deploy -x manifest/partialPackage.xml -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
+            sfdx force:source:deploy -x manifest/${{ env.packageXml }} -u AUTH_INFO --json --loglevel fatal --testlevel NoTestRun
           else
-            result=$(sudo grep -c '<members>[A-Za-z0-9]*Test[s]*</members>' manifest/partialPackage.xml || true)
+            result=$(sudo grep -c '<members>[A-Za-z0-9]*Test[s]*</members>' manifest/${{ env.packageXml }} || true)
             if [ $result -eq 0 ]; then
-              echo "テストクラスを記載してください。"
+              echo "ApexClassに紐づくテストクラスを${{ env.packageXml }}ファイルに記載してください。"
               exit 1
             else
-              sudo cat manifest/partialPackage.xml | grep -o -P '<members>[A-Za-z0-9]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
-              sfdx force:source:deploy -x manifest/partialPackage.xml -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
+              sudo cat manifest/${{ env.packageXml }} | grep -o -P '<members>[A-Za-z0-9_]*Test[s]*</members>' | sed 's/<members>//g' | sed 's/<\/members>//g' | tr '\n' ',' | sed s/,$// > ./TEST_CLASS
+              sfdx force:source:deploy -x manifest/${{ env.packageXml }} -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
             fi
           fi
