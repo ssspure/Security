@@ -67,4 +67,9 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          sudo grep -c "<name>CustomField</name>" manifest/package_diff.xml
+          var=$(sudo grep -c "<name>CustomField</name>" manifest/package_diff.xml)
+          if [ $var -eq 1 ]; then
+            echo "AAAAAAAAAAA"
+          else
+            echo "BBBBBBBBBBB"
+          fi
