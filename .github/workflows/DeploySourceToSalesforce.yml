@@ -67,4 +67,4 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          sudo grep -c "<name>ApexClass</name>" manifest/package_diff.xml
+          sudo grep -c "<name>CustomField</name>" manifest/package_diff.xml
