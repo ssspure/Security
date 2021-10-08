@@ -67,7 +67,7 @@ jobs:
         shell: bash
         if: github.event_name == 'push'
         run: |
-          var=$(sudo grep -c "<name>ApexClass</name>" manifest/package_diff.xml || true)
+          var=$(sudo grep -c "<name>CustomField</name>" manifest/package_diff.xml || true)
           if [ $var -eq 1 ]; then
             echo "AAAAAAAAAAA"
           else
