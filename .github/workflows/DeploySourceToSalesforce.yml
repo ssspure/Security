@@ -1,7 +1,6 @@
 # ------------------------- set global variable -------------------------
 env:
   packageXml: partialPackage.xml
-  targetBranches: master
 # -----------------------------------------------------------------------
 
 
@@ -9,18 +8,15 @@ name: Deploy Source to Salesforce
 
 on:
   push:
-    branches: 
-          - ${{ env.targetBranches }}
+    branches: [ master ]
     paths: 
           - 'force-app/**'
   pull_request:
-    branches: 
-          - ${{ env.targetBranches }}
+    branches: [ master ]
     paths:
           - 'force-app/**'  
   workflow_dispatch:
-    branches: 
-          - ${{ env.targetBranches }} 
+    branches: [ master ]  
 
 jobs:
   build:
@@ -51,7 +47,7 @@ jobs:
       # Deploy source And Run Apex Test
       - name: Deploy source And Run Apex Test
         shell: bash
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'pull_request'
         run: |
           result=$(sudo grep -c "<name>ApexClass</name>" manifest/${{ env.packageXml }} || true)
           if [ $result -eq 0 ]; then
