@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout Source from Github
-      - name 'Checkout source code'
+      - name: 'Checkout source code'
         uses: actions/checkout@v2
    
       # Install Salesforce CLI
