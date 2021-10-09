@@ -26,7 +26,10 @@ jobs:
       # Checkout Source from Github
       - name: 'Checkout source code'
         uses: actions/checkout@v2
-   
+        with: 
+          fetch-depth: 0
+        run: git checkout ${{ github.event.inputs.ref }}
+
       # Install Salesforce CLI
       - name: 'Install Salesforce CLI'
         run: |

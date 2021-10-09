@@ -5,5 +5,10 @@
         <members>shinseiList</members>
         <name>LightningComponentBundle</name>
     </types>
+    <types>
+        <members>TestClass</members>
+        <members>TestClassTest</members>
+        <name>ApexClass</name>
+    </types>
     <version>51.0</version>
 </Package>
