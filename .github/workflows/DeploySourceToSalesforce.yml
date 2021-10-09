@@ -26,16 +26,13 @@ jobs:
       # Checkout Source from Github
       - name: 'Checkout source code'
         uses: actions/checkout@v2
-        # if: ${{ github.event.inputs.ref != '' }}
-        # with: 
-        #   fetch-depth: 0
-        #   ref: ${{ github.event.inputs.ref }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref != '' }}
+        with: 
+          fetch-depth: 0
       
-      # - name: 'Checkout source by commitId'
-      #   if: ${{ github.event.inputs.ref != '' }}
-      #   with: 
-      #     fetch-depth: 0
-      #   run: git checkout ${{ github.event.inputs.ref }}
+      - name: 'Checkout source by commitId'
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref != '' }}
+        run: git reset --hard ${{ github.event.inputs.ref }}
 
       # Install Salesforce CLI
       - name: 'Install Salesforce CLI'
