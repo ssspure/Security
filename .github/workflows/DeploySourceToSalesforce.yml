@@ -26,10 +26,10 @@ jobs:
       # Checkout Source from Github
       - name: 'Checkout source code'
         uses: actions/checkout@v2
-        # if: ${{ github.event.inputs.ref != '' }}
-        # with: 
-        #   fetch-depth: 0
-        #   ref: ${{ github.event.inputs.ref }}
+        if: ${{ github.event.inputs.ref != '' }}
+        with: 
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.ref }}
       
       # - name: 'Checkout source by commitId'
       #   if: ${{ github.event.inputs.ref != '' }}
