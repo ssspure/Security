@@ -12,7 +12,7 @@ on:
     paths: 
           - 'force-app/**'
   workflow_dispatch:
-    branches: [ master ]
+    # branches: [ master ]
     inputs:
       ref:
         description: "commitId"
@@ -25,13 +25,13 @@ jobs:
     steps:
       # Checkout Source from Github
       - name: 'Checkout source code'
-        uses: actions/checkout@c435a0fe9b6299d85f1b64a8310414ff9c4cfb23
-      #   with: 
-      #     fetch-depth: 0
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
       
-      # - name: 'Checkout source by commitId'
-      #   if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref != '' }}
-      #   run: git reset --hard ${{ github.event.inputs.ref }}
+      - name: 'Checkout source by commitId'
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref != '' }}
+        run: git reset --hard ${{ github.event.inputs.ref }}
 
       # Install Salesforce CLI
       - name: 'Install Salesforce CLI'
