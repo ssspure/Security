@@ -12,7 +12,6 @@ on:
     paths: 
           - 'force-app/**'
   workflow_dispatch:
-    # branches: [ master ]
     inputs:
       ref:
         description: "commitId"
@@ -29,6 +28,8 @@ jobs:
         with: 
           fetch-depth: 0
       
+      # Checkout source by commitId
+      # execute when run workflow manually and commitId is not null
       - name: 'Checkout source by commitId'
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.ref != '' }}
         run: git reset --hard ${{ github.event.inputs.ref }}
