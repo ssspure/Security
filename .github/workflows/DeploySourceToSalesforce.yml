@@ -20,7 +20,7 @@ on:
         default: ""
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       # Checkout Source from Github
@@ -29,6 +29,7 @@ jobs:
         with: 
           fetch-depth: 0
       - run: git checkout ${{ github.event.inputs.ref }}
+        if: ${{ github.event.inputs.ref != '' }}
 
       # Install Salesforce CLI
       - name: 'Install Salesforce CLI'
