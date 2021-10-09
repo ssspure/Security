@@ -8,7 +8,7 @@ name: Deploy Source to Salesforce
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
     paths: 
           - 'force-app/**'
   workflow_dispatch:
