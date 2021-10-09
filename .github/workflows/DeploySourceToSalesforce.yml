@@ -12,12 +12,12 @@ on:
     paths: 
           - 'force-app/**'
   workflow_dispatch:
+    branches: [ master ]
     inputs:
       ref:
-        description: "ref"
+        description: "commitId"
         required: false
         default: ""
-    branches: [ master ]  
 
 jobs:
   build:
