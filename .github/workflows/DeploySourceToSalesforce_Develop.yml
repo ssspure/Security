@@ -1,6 +1,9 @@
 # ------------------------- set global variable -------------------------
 env:
+  # package xml file name
   packageXml: partialPackage.xml
+  # secret name
+  secretName: SALESFORCEAUTHINFO
 # -----------------------------------------------------------------------
 
 
@@ -46,7 +49,8 @@ jobs:
       # Store secret for dev hub
       - name: 'Populate auth file with SFDX_URL secret'
         shell: bash
-        run: 'echo ${{ secrets.SALESFORCEAUTHINFO }} > SFDX_AUTH_INFO'
+        # run: 'echo ${{ secrets.SALESFORCEAUTHINFO }} > SFDX_AUTH_INFO'
+        run: 'echo ${{ secrets.${{ env.secretName }} }} > SFDX_AUTH_INFO'
 
       # Authenticate against dev hub
       - name: 'Authenticate against dev hub'
