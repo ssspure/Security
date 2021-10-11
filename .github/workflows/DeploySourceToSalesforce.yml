@@ -16,7 +16,7 @@ on:
     inputs:
       ref:
         description: "commitId"
-        required: false
+        required: true
         default: ""
 
 jobs:
