@@ -63,11 +63,16 @@ jobs:
         run: | 
           sfdx force:data:soql:query -q "SELECT Status__c FROM ApprovalStatus__c WHERE Name = '${{ env.approveName }}'" -r csv > ApprovalStatus
           if test -f ./ApprovalStatus; then
-            mapFile lines < ./ApprovalStatus
-            if [ ${lines[1]} != "OK" ];then
-              echo "リリース承認されないため、リリースができません。"
-              exit 1
-            fi
+            count = 1;
+            while read line; do
+              if [ $count -eq 2 ]; then
+                if [ $line != "OK" ];then
+                  echo "リリース承認されないため、リリースができません。"
+                  exit 1
+                fi
+              fi
+              count=$((count++)) 
+            done <　./ApprovalStatus
           else
             echo "ApprovalStatus__cオブジェクトからNameが${{ env.approveName }}のレコードが見つかりません。入力データを確認してください。"
             exit 1
