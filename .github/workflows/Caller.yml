@@ -7,7 +7,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: ./.github/workflows/base.yml@master
+    uses: Security/.github/workflows/base.yml@master
     with:
       username: mona
       secrets:
