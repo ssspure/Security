@@ -2,14 +2,21 @@ name: Call a reusable workflow
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+    paths: 
+          - 'force-app/**'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "commitId"
+        required: true
+        default: ""
 
 jobs:
-  call-workflow-passing-data:
+  callWorkflowDeploySourceToSalesforce:
     uses: ssspure/Security/.github/workflows/base.yml@master
     with:
-      commitId: mona
+      commitId: github.event.inputs.ref
       packageXml: partialPackage.xml
       triggerEvent: ${{ github.event_name }}
     secrets:
