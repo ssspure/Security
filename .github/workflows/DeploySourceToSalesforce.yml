@@ -61,7 +61,7 @@ jobs:
       - name: 'Check Approval Status'
         shell: bash
         run: | 
-          sfdx force:data:soql:query -q "SELECT Status__c FROM ApprovalStatus__c WHERE Name = '${{ env.approveName }}'" -r csv > ApprovalStatus
+          sfdx force:data:soql:query -q "SELECT Status__c FROM ApprovalStatus__c WHERE Name = '${{ env.approveName }}'" -r csv > ./ApprovalStatus
           if test -f ./ApprovalStatus; then
             count=1;
             while read line; do
