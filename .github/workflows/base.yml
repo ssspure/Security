@@ -22,7 +22,15 @@ jobs:
     steps:
       - name: 'Populate auth file with SFDX_URL secret'
         shell: bash
-        run: 'echo ${{ inputs.commitId }}'
+        run: 'echo ${{ inputs.packageXml }}'
+
+      - name: 'Populate auth file with SFDX_URL secret'
+        shell: bash
+        run: 'echo ${{ inputs.triggerEvent }}'
+
+      - name: 'Populate auth file with SFDX_URL secret'
+        shell: bash
+        run: 'echo ${{ inputs.token }}'
 
       # # Checkout Source from Github
       # - name: 'Checkout source code'
