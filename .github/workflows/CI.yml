@@ -1,0 +1,16 @@
+name: Call a reusable workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  call-workflow-passing-data:
+    uses: ssspure/Security/.github/workflows/base.yml@master
+    with:
+      commitId: mona
+      packageXml: partialPackage.xml
+      triggerEvent: ${{ github.event_name }}
+    secrets:
+      token: ${{ secrets.SALESFORCEAUTHINFO }}
