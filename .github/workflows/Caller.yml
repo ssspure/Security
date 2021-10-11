@@ -10,5 +10,5 @@ jobs:
     uses: ssspure/Security/.github/workflows/base.yml@master
     with:
       username: mona
-      secrets:
-        token: ${{ secrets.SALESFORCEAUTHINFO }}
+    secrets:
+      token: ${{ secrets.SALESFORCEAUTHINFO }}
