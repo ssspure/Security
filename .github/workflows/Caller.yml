@@ -11,4 +11,4 @@ jobs:
     with:
       username: mona
       secrets:
-        token: ${{ secrets.TOKEN }}
+        token: ${{ secrets.SALESFORCEAUTHINFO }}
