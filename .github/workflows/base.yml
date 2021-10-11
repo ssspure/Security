@@ -30,7 +30,7 @@ jobs:
 
       - name: 'Populate auth file with SFDX_URL secret'
         shell: bash
-        run: 'echo ${{ inputs.token }}'
+        run: 'echo ${{ secrets.token }}'
 
       # # Checkout Source from Github
       # - name: 'Checkout source code'
