@@ -77,21 +77,22 @@ jobs:
           fi
 
       - name: Slack Notification
-        shell: bash
-        run: |
-          jq -n '{
-            attachments: [{
-              pretext: "Swagger が更新されたよ！",
-              color: "good",
-              title: "${{ github.event.pull_request.title }}",
-              title_link: "${{ github.event.pull_request.html_url }}"
-            }]
-          }' | curl -H 'Content-Type: application/json' -d @- ${{ secrets.SALECK_WEBHOOK }}
+        # shell: bash
+        # run: |
+        #   jq -n '{
+        #     attachments: [{
+        #       pretext: "Swagger が更新されたよ！",
+        #       color: "good",
+        #       title: "${{ github.event.pull_request.title }}",
+        #       title_link: "${{ github.event.pull_request.html_url }}"
+        #     }]
+        #   }' | curl -H 'Content-Type: application/json' -d @- ${{ secrets.SALECK_WEBHOOK }}
         # curl -X POST --data-urlencode "payload={\"channel\": \"#developer\", \"username\": \"ssspure\", \"color\": \"good\", \"text\": \"This is posted to #developer and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.SALECK_WEBHOOK }}
-        # uses: rtCamp/action-slack-notify@v2
-        # env:
-        #   SLACK_CHANNEL: developer
-        #   SLACK_MESSAGE: 'Post Content :rocket:'
-        #   SLACK_TITLE: Post Title
-        #   SLACK_USERNAME: ssspure
-        #   SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: developer
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: ssspure
+          SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+          SLACK_FOOTER: ''
