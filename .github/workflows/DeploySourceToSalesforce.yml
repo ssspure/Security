@@ -20,10 +20,6 @@ on:
         description: "commitId"
         required: true
         default: ""
-      searchName: 
-        description: "approveName"
-        required: true
-        default: ""
 
 jobs:
   deploy:
