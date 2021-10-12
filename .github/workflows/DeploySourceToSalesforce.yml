@@ -83,6 +83,7 @@ jobs:
           SLACK_TITLE: Deploy Successfully
           SLACK_USERNAME: ${{ github.actor }}
           SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+          SLACK_ICON: \":bell:\"
           SLACK_FOOTER: ''
 
       - name: Deploy Success Slack Notification
@@ -94,5 +95,6 @@ jobs:
           SLACK_TITLE: Deploy Failured
           SLACK_USERNAME: ${{ github.actor }}
           SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+          SLACK_ICON: \":bell:\"
           SLACK_COLOR: danger
           SLACK_FOOTER: ''
