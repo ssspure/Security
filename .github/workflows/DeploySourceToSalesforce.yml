@@ -78,7 +78,7 @@ jobs:
             fi
           fi
 
-      - name: Slack Notification
+      - name: Deploy Success Slack Notification
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -87,4 +87,16 @@ jobs:
           SLACK_TITLE: Deploy Successfully
           SLACK_USERNAME: ${{ github.actor }}
           SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+          SLACK_FOOTER: ''
+
+      - name: Deploy Success Slack Notification
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: developer
+          SLACK_MESSAGE: 'Deployed to ${{ env.targetSF }} Failured'
+          SLACK_TITLE: Deploy Failured
+          SLACK_USERNAME: ${{ github.actor }}
+          SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
+          SLACK_COLOR: danger
           SLACK_FOOTER: ''
