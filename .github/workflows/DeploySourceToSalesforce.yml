@@ -79,7 +79,7 @@ jobs:
       - name: Slack Notification
         shell: bash
         run: |
-          curl -X POST --data-urlencode "payload={\"channel\": \"#developer\", \"username\": \"ssspure\", \"text\": \"This is posted to #developer and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.SALECK_WEBHOOK }}
+          curl -X POST --data-urlencode "payload={\"channel\": \"#developer\", \"username\": \"ssspure\", \"color\": \"good\", \"text\": \"This is posted to #developer and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" ${{ secrets.SALECK_WEBHOOK }}
         # uses: rtCamp/action-slack-notify@v2
         # env:
         #   SLACK_CHANNEL: developer
