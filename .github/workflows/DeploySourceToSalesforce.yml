@@ -57,23 +57,6 @@ jobs:
       - name: 'Authenticate against dev hub'
         run: sfdx force:auth:sfdxurl:store -f SFDX_AUTH_INFO -s -a AUTH_INFO
 
-      # 承認ステータスチェック
-      - name: 'Check Approval Status'
-        shell: bash
-        run: | 
-          result=$(sfdx force:data:soql:query -q "SELECT Status__c FROM ApprovalStatus__c WHERE Name = '${{ github.event.inputs.searchName }}'" -r csv)
-          
-          if [ -z $result ];then
-            echo "ApprovalStatus__cオブジェクトからNameが${{ env.approveName }}のレコードが見つかりません。入力データを確認してください。"
-            exit 1
-          else
-            resultArray=($result)
-            if [ ${resultArray[1]} != "OK" ];then
-              echo "リリース承認されないため、リリースができません。"
-              exit 1
-            fi
-          fi
-
       # Deploy source And Run Apex Test
       - name: Deploy source And Run Apex Test
         shell: bash
@@ -92,3 +75,12 @@ jobs:
               sfdx force:source:deploy -x manifest/${{ env.packageXml }} -u AUTH_INFO --json --loglevel fatal --testlevel RunSpecifiedTests --runtests $(cat ./TEST_CLASS)
             fi
           fi
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: general
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: ssspure
+          SLACK_WEBHOOK: ${{ secrets.SALECK_WEBHOOK }}
